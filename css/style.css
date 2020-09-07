@@ -11411,7 +11411,3 @@ figure.highlight .section {
     padding: 1.5rem 1rem;
   }
 }
-img[src$="centerme"] {
-  display: block;
-  margin: 0 auto;
-}
