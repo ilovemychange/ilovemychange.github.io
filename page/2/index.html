@@ -111,7 +111,7 @@
 <p>일감 편집 가능</p>
 </blockquote>
 <p>끝.</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-08-16T13:00:00.000Z" title="2020-08-16T13:00:00.000Z">2020-08-16</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-09-13T08:26:01.943Z" title="2020-09-13T08:26:01.943Z">2020-09-13</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span> / </span><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/">레드마인</a></span><span class="level-item">4 minutes read (About 579 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/08/16/remine-process/">레드마인 일감 프로세스 설계하기</a></h1><div class="content"><p>레드마인의 가장 강력한 기능인 “일감”을 제대로 다루기 위해서는, 먼저 일감을 누가 어떻게 시작하고 진행하고 종료할 것인지 프로세스를 잡아야 한다. </p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-08-16T13:00:00.000Z" title="2020-08-16T13:00:00.000Z">2020-08-16</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-09-13T08:30:07.071Z" title="2020-09-13T08:30:07.071Z">2020-09-13</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span> / </span><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/">레드마인</a></span><span class="level-item">5 minutes read (About 713 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/08/16/remine-process/">레드마인 일감 프로세스 설계하기</a></h1><div class="content"><p>레드마인의 가장 강력한 기능인 “일감”을 제대로 다루기 위해서는, 먼저 일감을 누가 어떻게 시작하고 진행하고 종료할 것인지 프로세스를 잡아야 한다. </p>
 <p>레드마인은 거의 모든 것을 커스터마이징할 수 있도록 개방적으로 프로그램이 설계되어 있기 때문에, 프로세스를 어떻게 잡아야 하는지를 전적으로 사용자가 원하는대로 정해도 된다. 프로그램을 수정하는 것은 그 다음에 고민해도 된다. </p>
 <p>필자가 속해있는 SI 프로젝트에서는 어떻게 결함처리 프로세스를 잡았는지를 기록해보고자 한다. </p>
 <p>먼저, 일감은 크게 프로그램과 결함 2가지 유형으로 분류된다. 그리고 그 하위로 다시 메인/서브 프로그램과, 단테/통테 결함으로 분류된다. </p>
@@ -140,7 +140,8 @@
 <li>거절 프로세스</li>
 <li>결함 재접수 프로세스</li>
 </ol>
-<h3 id="기본-프로세스"><a href="#기본-프로세스" class="headerlink" title="기본 프로세스"></a>기본 프로세스</h3><table>
+<h3 id="기본-프로세스"><a href="#기본-프로세스" class="headerlink" title="기본 프로세스"></a>기본 프로세스</h3><p>결함이 정상적으로 처리되는 기본 프로세스이다. 현업TF에서 결함을 신규등록하고, PL은 해당 결함을 담당 개발자에게 할당한다. 개발자는 결함을 할당받아 결함을 조치한다. 조치가 완료된 결함은 PL이 중간테스트를 진행한다. 중간테스트가 통과하면 최종적으로 현업TF에서 최종테스트를 진행한다. 문제가 없으면 결함은 종료된다.</p>
+<table>
 <thead>
 <tr>
 <th align="center">담당자</th>
