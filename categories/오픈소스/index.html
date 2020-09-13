@@ -445,7 +445,7 @@
 
 <p>이러면 내 블로그에 글 작성이 완료되었다. 참 빠르고 편한 것 같다.<br>그 이외에 Hexo의 다양한 명령어들은 <a target="_blank" rel="noopener" href="https://hexo.io/ko/docs/commands">Commands - Hexo</a>를 참고한다.</p>
 <p>끝.</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-08-20T13:00:00.000Z" title="2020-08-20T13:00:00.000Z">2020-08-20</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-09-13T09:15:03.239Z" title="2020-09-13T09:15:03.239Z">2020-09-13</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span> / </span><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/">레드마인</a></span><span class="level-item">11 minutes read (About 1617 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/08/20/remine-process-design/">레드마인 일감 프로세스 설계하기</a></h1><div class="content"><p>레드마인의 가장 강력한 기능인 “일감”을 제대로 다루기 위해서는, 먼저 일감을 누가 어떻게 시작하고 진행하고 종료할 것인지 프로세스를 잡아야 한다. </p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-08-20T13:00:00.000Z" title="2020-08-20T13:00:00.000Z">2020-08-20</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-09-13T09:16:34.239Z" title="2020-09-13T09:16:34.239Z">2020-09-13</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span> / </span><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/">레드마인</a></span><span class="level-item">11 minutes read (About 1617 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/08/20/remine-process-design/">레드마인 일감 프로세스 설계하기</a></h1><div class="content"><p>레드마인의 가장 강력한 기능인 “일감”을 제대로 다루기 위해서는, 먼저 일감을 누가 어떻게 시작하고 진행하고 종료할 것인지 프로세스를 잡아야 한다. </p>
 <p>레드마인은 거의 모든 것을 커스터마이징할 수 있도록 개방적으로 프로그램이 설계되어 있기 때문에, 프로세스를 어떻게 잡아야 하는지를 전적으로 사용자가 원하는대로 정해도 된다. 프로그램을 수정하는 것은 프로세스를 잡은 다음에 고민해도 된다. </p>
 <p>필자는 일단 일감을 결함으로 한정하고, 프로세스를 다음과 같이 대표적으로 5가지 케이스로 나누었다. </p>
 <ol>
@@ -496,7 +496,7 @@
 </tbody></table>
 <hr>
 <h2 id="수행사-자체진행-프로세스"><a href="#수행사-자체진행-프로세스" class="headerlink" title="수행사 자체진행 프로세스"></a>수행사 자체진행 프로세스</h2><p>발주처에서 관여하지 않고 수행사에서 자체적으로 진행하는 프로세스이다. 기본 프로세스에서 “현업TF”가 빠진 케이스라고 보면 된다. 이는 다시 두 가지 케이스 나뉠 수 있는데, 첫번째, <strong>PL이 결함을 발견하고 등록하는 케이스</strong>와, 두번째, <strong>개발자가 스스로 결함을 발견하고 등록하는 케이스</strong>이다.</p>
-<h4 id="PL이-결함을-등록하는-케이스"><a href="#PL이-결함을-등록하는-케이스" class="headerlink" title="PL이 결함을 등록하는 케이스"></a>PL이 결함을 등록하는 케이스</h4><p>PL이 결함을 발견한 경우이고, PL이 결함을 등록하는 것부터 프로세스가 시작된다.</p>
+<h3 id="PL이-결함을-등록하는-케이스"><a href="#PL이-결함을-등록하는-케이스" class="headerlink" title="PL이 결함을 등록하는 케이스"></a>PL이 결함을 등록하는 케이스</h3><p>PL이 결함을 발견한 경우이고, PL이 결함을 등록하는 것부터 프로세스가 시작된다.</p>
 <table>
 <thead>
 <tr>
@@ -525,7 +525,7 @@
 <td align="center">PL 테스트 완료</td>
 </tr>
 </tbody></table>
-<h4 id="개발자가-결함을-등록하는-케이스"><a href="#개발자가-결함을-등록하는-케이스" class="headerlink" title="개발자가 결함을 등록하는 케이스"></a>개발자가 결함을 등록하는 케이스</h4><p>개발자가 결함을 발견한 경우이고, 개발자가 결함을 등록하는 것부터 프로세스가 시작된다.</p>
+<h3 id="개발자가-결함을-등록하는-케이스"><a href="#개발자가-결함을-등록하는-케이스" class="headerlink" title="개발자가 결함을 등록하는 케이스"></a>개발자가 결함을 등록하는 케이스</h3><p>개발자가 결함을 발견한 경우이고, 개발자가 결함을 등록하는 것부터 프로세스가 시작된다.</p>
 <table>
 <thead>
 <tr>
@@ -589,7 +589,7 @@
 </tbody></table>
 <hr>
 <h2 id="거절-프로세스"><a href="#거절-프로세스" class="headerlink" title="거절 프로세스"></a>거절 프로세스</h2><p>결함이 등록되었으나 이것이 사업범위를 넘어서는 요구사항일 경우에는, 수행사에서 조치를 거절하는 경우도 발생한다. 이는 다시 두 가지 케이스로 나뉠 수 있는데, 첫번째, <strong>PL이 즉시 거절하는 케이스</strong>와, 두번째, <strong>개발자 확인 후 거절하는 케이스</strong>이다.</p>
-<h4 id="PL이-즉시-거절하는-케이스"><a href="#PL이-즉시-거절하는-케이스" class="headerlink" title="PL이 즉시 거절하는 케이스"></a>PL이 즉시 거절하는 케이스</h4><p>최초로 결함을 검토한 PL이 즉시 결함처리를 거절하는 케이스이다. </p>
+<h3 id="PL이-즉시-거절하는-케이스"><a href="#PL이-즉시-거절하는-케이스" class="headerlink" title="PL이 즉시 거절하는 케이스"></a>PL이 즉시 거절하는 케이스</h3><p>최초로 결함을 검토한 PL이 즉시 결함처리를 거절하는 케이스이다. </p>
 <table>
 <thead>
 <tr>
@@ -612,7 +612,7 @@
 <td align="center">거절</td>
 </tr>
 </tbody></table>
-<h4 id="개발자-확인-후-거절하는-케이스"><a href="#개발자-확인-후-거절하는-케이스" class="headerlink" title="개발자 확인 후 거절하는 케이스"></a>개발자 확인 후 거절하는 케이스</h4><p>PL은 결함을 개발자에게 할당하였으나, 개발자가 검토하여 다시 PL에게 의견을 보고하고, 보고받은 PL이 결함처리를 거절하는 케이스이다.</p>
+<h3 id="개발자-확인-후-거절하는-케이스"><a href="#개발자-확인-후-거절하는-케이스" class="headerlink" title="개발자 확인 후 거절하는 케이스"></a>개발자 확인 후 거절하는 케이스</h3><p>PL은 결함을 개발자에게 할당하였으나, 개발자가 검토하여 다시 PL에게 의견을 보고하고, 보고받은 PL이 결함처리를 거절하는 케이스이다.</p>
 <table>
 <thead>
 <tr>
@@ -646,7 +646,7 @@
 </tbody></table>
 <hr>
 <h2 id="결함-재접수-프로세스"><a href="#결함-재접수-프로세스" class="headerlink" title="결함 재접수 프로세스"></a>결함 재접수 프로세스</h2><p>개발자가 결함을 조치완료하였지만, 테스트 중에 결함이 재발생하는 경우들이 있다. (제대로 조치가 안되었거나, 조치했지만 다른 에러 케이스가 발생하는 경우 등등) 이는 다시 두 가지 케이스 나뉠 수 있는데, 첫번째, <strong>PL테스트 실패 후 결함 재접수 케이스</strong>와, 두번째, <strong>현업테스트 실패 후 결함 재접수 케이스</strong>이다.</p>
-<h4 id="PL테스트-실패-후-결함-재접수-케이스"><a href="#PL테스트-실패-후-결함-재접수-케이스" class="headerlink" title="PL테스트 실패 후 결함 재접수 케이스"></a>PL테스트 실패 후 결함 재접수 케이스</h4><table>
+<h3 id="PL테스트-실패-후-결함-재접수-케이스"><a href="#PL테스트-실패-후-결함-재접수-케이스" class="headerlink" title="PL테스트 실패 후 결함 재접수 케이스"></a>PL테스트 실패 후 결함 재접수 케이스</h3><table>
 <thead>
 <tr>
 <th align="center">담당자</th>
@@ -680,7 +680,7 @@
 <td align="center">결함 재조치 시작</td>
 </tr>
 </tbody></table>
-<h4 id="현업테스트-실패-후-결함-재접수-케이스"><a href="#현업테스트-실패-후-결함-재접수-케이스" class="headerlink" title="현업테스트 실패 후 결함 재접수 케이스"></a>현업테스트 실패 후 결함 재접수 케이스</h4><table>
+<h3 id="현업테스트-실패-후-결함-재접수-케이스"><a href="#현업테스트-실패-후-결함-재접수-케이스" class="headerlink" title="현업테스트 실패 후 결함 재접수 케이스"></a>현업테스트 실패 후 결함 재접수 케이스</h3><table>
 <thead>
 <tr>
 <th align="center">담당자</th>
