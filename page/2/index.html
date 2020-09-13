@@ -111,7 +111,7 @@
 <p>일감 편집 가능</p>
 </blockquote>
 <p>끝.</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-08-16T13:00:00.000Z" title="2020-08-16T13:00:00.000Z">2020-08-16</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-09-13T08:23:14.628Z" title="2020-09-13T08:23:14.628Z">2020-09-13</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span> / </span><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/">레드마인</a></span><span class="level-item">3 minutes read (About 517 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/08/16/remine-process/">레드마인 일감 프로세스 설계하기</a></h1><div class="content"><p>레드마인의 가장 강력한 기능인 “일감”을 제대로 다루기 위해서는, 먼저 일감을 누가 어떻게 시작하고 진행하고 종료할 것인지 프로세스를 잡아야 한다. </p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-08-16T13:00:00.000Z" title="2020-08-16T13:00:00.000Z">2020-08-16</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-09-13T08:23:40.692Z" title="2020-09-13T08:23:40.692Z">2020-09-13</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span> / </span><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/">레드마인</a></span><span class="level-item">3 minutes read (About 517 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/08/16/remine-process/">레드마인 일감 프로세스 설계하기</a></h1><div class="content"><p>레드마인의 가장 강력한 기능인 “일감”을 제대로 다루기 위해서는, 먼저 일감을 누가 어떻게 시작하고 진행하고 종료할 것인지 프로세스를 잡아야 한다. </p>
 <p>레드마인은 거의 모든 것을 커스터마이징할 수 있도록 개방적으로 프로그램이 설계되어 있기 때문에, 프로세스를 어떻게 잡아야 하는지를 전적으로 사용자가 원하는대로 정해도 된다. 프로그램을 수정하는 것은 그 다음에 고민해도 된다. </p>
 <p>필자가 속해있는 SI 프로젝트에서는 어떻게 결함처리 프로세스를 잡았는지를 기록해보고자 한다. </p>
 <p>먼저, 일감은 크게 프로그램과 결함 2가지 유형으로 분류된다. 그리고 그 하위로 다시 메인/서브 프로그램과, 단테/통테 결함으로 분류된다. </p>
@@ -177,7 +177,34 @@
 <td align="center">현업테스트 완료</td>
 </tr>
 </tbody></table>
-<h3 id="수행사-자체진행-프로세스"><a href="#수행사-자체진행-프로세스" class="headerlink" title="수행사 자체진행 프로세스"></a>수행사 자체진행 프로세스</h3><p>| 담당자 | PL  | 개발자 | 개발자 | PL | PL |<br>|:—:|:—:|:—:|:—:|:—:|:—:|:—:|:—:|<br>| <strong>일감상태</strong> | 신규 | 진행 | 조치완료 | -&gt; | 최종완료 |<br>| <strong>Action</strong> | 결함등록, 개발자 지정 | 결함 조치 | 결함 해결 | PL테스트 시작 | PL 테스트 완료</p>
+<h3 id="수행사-자체진행-프로세스"><a href="#수행사-자체진행-프로세스" class="headerlink" title="수행사 자체진행 프로세스"></a>수행사 자체진행 프로세스</h3><table>
+<thead>
+<tr>
+<th align="center">담당자</th>
+<th align="center">PL</th>
+<th align="center">개발자</th>
+<th align="center">개발자</th>
+<th align="center">PL</th>
+<th align="center">PL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>일감상태</strong></td>
+<td align="center">신규</td>
+<td align="center">진행</td>
+<td align="center">조치완료</td>
+<td align="center">-&gt;</td>
+<td align="center">최종완료</td>
+</tr>
+<tr>
+<td align="center"><strong>Action</strong></td>
+<td align="center">결함등록, 개발자 지정</td>
+<td align="center">결함 조치</td>
+<td align="center">결함 해결</td>
+<td align="center">PL테스트 시작</td>
+<td align="center">PL 테스트 완료</td>
+</tr>
+</tbody></table>
 <p><strong>작성중…</strong></p>
 </div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-08-15T13:00:00.000Z" title="2020-08-15T13:00:00.000Z">2020-08-15</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-09-06T10:29:01.556Z" title="2020-09-06T10:29:01.556Z">2020-09-06</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/">오픈소스</a><span> / </span><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/">레드마인</a></span><span class="level-item">5 minutes read (About 766 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/08/15/redmine-setup/">레드마인 설치하기</a></h1><div class="content"><p>프로젝트 수행 중에 레드마인을 직접 세팅하고 커스터마이징해볼 기회가 생겨서 추후 다른 프로젝트에서 활용할 때도 참고할 수 있도록 기록을 남겨두고자 한다.</p>
 <hr>
