@@ -1,18 +1,645 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>ilovemychange&#039;s IT Blog</title><meta property="og:type" content="blog"><meta property="og:title" content="ilovemychange&#039;s IT Blog"><meta property="og:url" content="https://ilovemychange.github.io/"><meta property="og:site_name" content="ilovemychange&#039;s IT Blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ilovemychange.github.io/img/og_image.png"><meta property="article:author" content="ilovemychange"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ilovemychange.github.io"},"headline":"ilovemychange's IT Blog","image":["https://ilovemychange.github.io/img/og_image.png"],"author":{"@type":"Person","name":"ilovemychange"},"description":null}</script><link rel="icon" href="/img/skating4.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><meta name="generator" content="Hexo 5.1.1"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ilovemychange</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-09-07T11:00:00.000Z" title="2020-09-07T11:00:00.000Z">2020-09-07</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-03T02:57:41.694Z" title="2020-10-03T02:57:41.694Z">2020-10-03</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-FHIR-HAPI-FHIR-%EC%84%A4%EC%B9%98/">오픈소스 &gt; FHIR &gt; HAPI FHIR 설치</a></span><span class="level-item">a minute read (About 186 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/07/hapi-fhir-environment-0/">HAPI FHIR 환경구성 개요</a></h1><div class="content"><hr>
-<p>오픈소스 HAPI FHIR 환경은 다음과 같은 순서로 구축한다. 상세한 구축 가이드는 그림과 설명을 통해 작성하다보니 꽤 길어져서 여러 편에 걸쳐 나누어 정리해야할 것 같다.</p>
-<h2 id="소프트웨어-설치"><a href="#소프트웨어-설치" class="headerlink" title="소프트웨어 설치"></a>소프트웨어 설치</h2><ol>
-<li><a href="https://ilovemychange.github.io/2020/09/08/hapi-fhir-environment-1/">HAPI FHIR 환경 구성하기 (1/5편) - JDK, Eclipse 설치</a></li>
-<li><a href="https://ilovemychange.github.io/2020/09/09/hapi-fhir-environment-2/">HAPI FHIR 환경 구성하기 (2/5편) - Tomcat 설치</a></li>
-<li><a href="https://ilovemychange.github.io/2020/09/10/hapi-fhir-environment-3/">HAPI FHIR 환경 구성하기 (3/5편) - MySQL 설치</a></li>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>ilovemychange&#039;s IT Blog</title><meta property="og:type" content="blog"><meta property="og:title" content="ilovemychange&#039;s IT Blog"><meta property="og:url" content="https://ilovemychange.github.io/"><meta property="og:site_name" content="ilovemychange&#039;s IT Blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ilovemychange.github.io/img/og_image.png"><meta property="article:author" content="ilovemychange"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ilovemychange.github.io"},"headline":"ilovemychange's IT Blog","image":["https://ilovemychange.github.io/img/og_image.png"],"author":{"@type":"Person","name":"ilovemychange"},"description":null}</script><link rel="icon" href="/img/skating4.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><meta name="generator" content="Hexo 5.1.1"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">ilovemychange</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-09-10T11:00:00.000Z" title="2020-09-10T11:00:00.000Z">2020-09-10</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-09T06:57:42.922Z" title="2020-10-09T06:57:42.922Z">2020-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-FHIR-HAPI-FHIR-%EC%84%A4%EC%B9%98/">오픈소스 &gt; FHIR &gt; HAPI FHIR 설치</a></span><span class="level-item">5 minutes read (About 801 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/10/hapi-fhir-manual-3/">HAPI FHIR 환경 구성하기 (3/7편) - Tomcat 설치</a></h1><div class="content"><p>오픈소스 HAPI FHIR 환경은 다음과 같이 7단계로 구성된다.<br>본 글에서는 <strong>3. HAPI FHIR 환경 구성하기 (3/7편) - Tomcat 설치</strong>에 대해 다룬다.</p>
+<ol>
+<li><a href="https://ilovemychange.github.io/2020/09/08/hapi-fhir-manual-1/">HAPI FHIR 환경 구성하기 (1/7편) - JDK 설치</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/09/hapi-fhir-manual-2/">HAPI FHIR 환경 구성하기 (2/7편) - Eclipse 설치</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/10/hapi-fhir-manual-3/">HAPI FHIR 환경 구성하기 (3/7편) - Tomcat 설치</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/11/hapi-fhir-manual-4/">HAPI FHIR 환경 구성하기 (4/7편) - MySQL 설치 및 스키마/계정 설정</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/12/hapi-fhir-manual-5/">HAPI FHIR 환경 구성하기 (5/7편) - hapi-fhir-jpa-server 환경세팅</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/13/hapi-fhir-manual-6/">HAPI FHIR 환경 구성하기 (6/7편) - hapi-fhir 테스트 페이지 활용</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/14/hapi-fhir-manual-7/">HAPI FHIR 환경 구성하기 (7/7편) - hapi-fhir-client 환경세팅</a></li>
 </ol>
+<p><a target="_blank" rel="noopener" href="http://tomcat.apache.org/">Tomcat</a>은 전세계적으로 가장 많이 사용되는 오픈소스 웹 컨테이너다. 아파치 소프트웨어 재단에서 개발한 서블릿 컨테이너(또는 웹 컨테이너)만 있는 웹 애플리케이션 서버이다. Tomcat은 웹서버와 연동하여 실행할 수 있는 자바 환경을 제공하여 JSP와 자바 서블릿이 실행될 수 있는 환경을 제공하고 있다. </p>
 <hr>
-<h2 id="HAPI-FHIR-세팅"><a href="#HAPI-FHIR-세팅" class="headerlink" title="HAPI FHIR 세팅"></a>HAPI FHIR 세팅</h2><h3 id="서버"><a href="#서버" class="headerlink" title="서버"></a>서버</h3><ol start="4">
-<li><a href="https://ilovemychange.github.io/2020/09/14/hapi-fhir-environment-4/">HAPI FHIR 환경 구성하기 (4/5편) - hapi-fhir-jpa-server 설치하기</a></li>
+<h2 id="Tomcat-9-설치하기"><a href="#Tomcat-9-설치하기" class="headerlink" title="Tomcat 9 설치하기"></a>Tomcat 9 설치하기</h2><ol>
+<li><a target="_blank" rel="noopener" href="http://tomcat.apache.org/">Apache Tomcat</a> 사이트에 접속하여 Tomcat 9 다운로드 페이지로 이동한다. </li>
+<li>Tomcat 9은 2020년 10월 기준, <strong>최신버전 9.0.38</strong> 까지 릴리즈되었다. “32-bit/64-bit Windows Service Installer”를 선택하여 제품을 내려받는다.</li>
 </ol>
-<h3 id="클라이언트"><a href="#클라이언트" class="headerlink" title="클라이언트"></a>클라이언트</h3><ol start="5">
-<li>HAPI FHIR 환경 구성하기 (5/5편) - hapi-fhir-client 설치하기 (작성중)</li>
+<p><img src="/image/hapi-fhir-screenshot/install-tomcat/01.tomcat9-page.png" alt=""></p>
+<ol start="3">
+<li>내려받은 Setup파일을 실행하여 설치를 진행한다.</li>
 </ol>
+<p><img src="/image/hapi-fhir-screenshot/install-tomcat/02.setup-start.png" alt=""></p>
+<ol start="4">
+<li>소프트웨어 사용 라이센스에 동의하고 넘어간다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-tomcat/03.license-agreement.png" alt=""></p>
+<ol start="5">
+<li>컴포넌트를 선택하고 Next 진행한다. </li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-tomcat/04.choose-components.png" alt=""></p>
+<ol start="6">
+<li>Tomcat은 디폴트 8080포트로 설정되나, 다른 포트로 접속하고자 한다면 포트번호를 변경한다. 그리고 User Name과 Password를 설정하고 Next로 넘어간다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-tomcat/05.configuration.png" alt=""></p>
+<ol start="7">
+<li>JVM경로를 지정해준다. 앞서 jdk를 설치한 폴더 경로를 지정한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-tomcat/06.java-virtual-machine.png" alt=""></p>
+<ol start="8">
+<li>다음으로 진행하기 전에, 프로젝트 폴더(D:/hapi-fhir)내에 Tomcat을 설치할 폴더를 생성하도록 한다. 다음과 같이 Tomcat 9라는 폴더를 생성한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-tomcat/07.folder-creation.png" alt=""></p>
+<ol start="9">
+<li>방금 전에 생성한 Tomcat 9 폴더를 설치 경로로 잡아준 후에 Install을 진행한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-tomcat/08.choose-install-location.png" alt=""></p>
+<ol start="10">
+<li>설치가 완료되었다면, Finish를 눌러 종료한다. (Tomcat 서버를 테스트해보려면, Run Apache Tomcat을 체크한다.)</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-tomcat/09.finish.png" alt=""></p>
+<ol start="11">
+<li>Tomcat이 정상적으로 실행되는지 확인해보기 위해 웹 브라우저를 열어서 “localhost:8080”을 입력한다. 다음과 같은 화면이 뜬다면 정상적으로 설치 및 실행된 것이다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-tomcat/10.tomcat-localhost.png" alt=""></p>
+<p>Tomcat 설치는 이것으로 마무리한다.</p>
+<p>끝.</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-09-09T11:00:00.000Z" title="2020-09-09T11:00:00.000Z">2020-09-09</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-09T06:55:43.510Z" title="2020-10-09T06:55:43.510Z">2020-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-FHIR-HAPI-FHIR-%EC%84%A4%EC%B9%98/">오픈소스 &gt; FHIR &gt; HAPI FHIR 설치</a></span><span class="level-item">4 minutes read (About 560 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/09/hapi-fhir-manual-2/">HAPI FHIR 환경 구성하기 (2/7편) - Eclipse 설치</a></h1><div class="content"><p>오픈소스 HAPI FHIR 환경은 다음과 같이 7단계로 구성된다.<br>본 글에서는 <strong>2. HAPI FHIR 환경 구성하기 (2/7편) - Eclipse 설치</strong>에 대해 다룬다.</p>
+<ol>
+<li><a href="https://ilovemychange.github.io/2020/09/08/hapi-fhir-manual-1/">HAPI FHIR 환경 구성하기 (1/7편) - JDK 설치</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/09/hapi-fhir-manual-2/">HAPI FHIR 환경 구성하기 (2/7편) - Eclipse 설치</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/10/hapi-fhir-manual-3/">HAPI FHIR 환경 구성하기 (3/7편) - Tomcat 설치</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/11/hapi-fhir-manual-4/">HAPI FHIR 환경 구성하기 (4/7편) - MySQL 설치 및 스키마/계정 설정</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/12/hapi-fhir-manual-5/">HAPI FHIR 환경 구성하기 (5/7편) - hapi-fhir-jpa-server 환경세팅</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/13/hapi-fhir-manual-6/">HAPI FHIR 환경 구성하기 (6/7편) - hapi-fhir 테스트 페이지 활용</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/14/hapi-fhir-manual-7/">HAPI FHIR 환경 구성하기 (7/7편) - hapi-fhir-client 환경세팅</a></li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.eclipse.org/">Eclipse</a>란, Java를 기반으로 한 오픈소스 IDE(통합개발환경)이다.</p>
+<hr>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.eclipse.org/downloads/">이클립스 다운로드 페이지</a>로 접속하여, Download 64 bit 파일을 다운로드한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-eclipse/01.eclipse-home.png" alt=""></p>
+<ol start="2">
+<li>다운로드 버튼을 클릭하여 Eclipse Installer를 내려받는다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-eclipse/02.eclipse-download.png" alt=""></p>
+<ol start="3">
+<li>다운로드받은 Eclipse Installer를 실행한다. Installer를 통해 Eclipse의 사용자에게 필요한 패키지를 선택하여 설치할 수 있다. <strong>Eclipse IDE for Enterprise Java Developers</strong>를 선택하여 진행한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-eclipse/03.enterprise-version.png" alt=""></p>
+<ol start="4">
+<li>JVM 경로와 설치경로(Installation Folder)를 지정한다. JVM은 앞서 설치한 jdk 폴더 경로를 지정하고, 설치경로는 프로젝트 폴더(D:\hapi-fhir)로 지정한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-eclipse/04.install-path-after.png" alt=""></p>
+<ol start="5">
+<li>소프트웨어 사용과 관련된 동의서이다. Accept Now를 누르고 진행한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-eclipse/05.eclipse-user-agreement.png" alt=""></p>
+<ol start="6">
+<li>설치가 진행된다. 중간중간 팝업창이 뜨면 계속 진행하면 된다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-eclipse/06.eclipse-installation.png" alt=""></p>
+<ol start="7">
+<li>설치가 완료되었다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-eclipse/07.eclipse-install-complete.png" alt=""></p>
+<ol start="8">
+<li>지정한 설치경로 (D:/hapi-fhir) 아래에 다음과 같이 eclipse 폴더가 생성이 된다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-eclipse/08.folder-eclipse.png" alt=""></p>
+<p>Eclipse 설치는 이것으로 마무리한다.</p>
+<p>끝.</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-09-08T13:00:00.000Z" title="2020-09-08T13:00:00.000Z">2020-09-08</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-03T02:47:49.585Z" title="2020-10-03T02:47:49.585Z">2020-10-03</time></span><span class="level-item"><a class="link-muted" href="/categories/%EA%B8%B0%ED%9A%8D-%EB%AA%A8%EB%B0%94%EC%9D%BC-%ED%91%9C%EC%A4%80/">기획 &gt; 모바일 표준</a></span><span class="level-item">16 minutes read (About 2444 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/08/mobile-device-guide/">모바일 디바이스 선정 가이드</a></h1><div class="content"><p>현 프로젝트에서 발주처의 모바일 표준체계를 구축하고 있는데, 다양한 표준들 중에서 <strong>모바일 디바이스를 어떻게 선정</strong>하면 좋을지 가이드하는 업무가 있어서 정리해보려고 한다. </p>
+<p>모바일 디바이스 선정 가이드는, 모바일 앱 개발을 위한 <strong>사전준비 단계</strong>나 <strong>분석설계 단계</strong>에서 앱을 지원하는 특정 디바이스 또는 디바이스 지원범위를 적절하게 선정할 수 있도록 하는 것을 목적으로 한다. 즉 모바일 프로세스 전반 중에 모바일 디바이스 선정 가이드를 활용할 수 있는 단계는 다음과 같다.</p>
+<blockquote>
+<p><strong>(1) 사전준비 &lt;&lt;&lt;</strong><br>(2) 제안요청<br><strong>(3) 분석설계 &lt;&lt;&lt;</strong><br>(4) 개발<br>(5) 테스트<br>(6) 검수<br>(7) 운영<br>(8) 폐기  </p>
+</blockquote>
+<hr>
+<p>업무 담당자가 모바일의 디바이스 종류, 운영체제, 해상도 등의 특징을 이해하고 검토할 수 있도록 가이드는 다음과 같이 구성하였다. </p>
+<blockquote>
+<ol>
+<li>디바이스 선정방안<br>1.1 사용자 환경 고려<br>1.2 정보조회량 고려<br>1.3 가용 사용시간 고려  </li>
+<li>OS 선정방안<br>2.1 OS 점유율<br>2.2 Android 버전<br>2.3 iOS 버전  </li>
+<li>해상도 선정방안<br>3.1 Android 해상도<br>3.2 iOS 해상도  </li>
+</ol>
+<p>별첨. 삼성전자 최근 3년 디바이스 리스트<br>별첨. 애플 최근 3년 디바이스 리스트<br>별첨. 엘지 최근 3년 디바이스 리스트<br>별첨. PDA 제품 선정 방안<br>별첨. PDA 제품 사양 검토 예시  </p>
+</blockquote>
+<hr>
+<h2 id="디바이스-선정방안"><a href="#디바이스-선정방안" class="headerlink" title="디바이스 선정방안"></a>디바이스 선정방안</h2><h3 id="소유-주체에-따른-지원범위"><a href="#소유-주체에-따른-지원범위" class="headerlink" title="소유 주체에 따른 지원범위"></a>소유 주체에 따른 지원범위</h3><p>크게 보면 구축하고자 하는 앱이 <strong>B2B 서비스인지, B2C 서비스인지</strong>에 따라 디바이스를 선정하는 방법은 달라진다. </p>
+<ul>
+<li>디바이스가 회사의 자산인 경우(여기서는 B2B라고 하겠다)에 <strong>태블릿이나 스마트폰, PDA 중에 특정 디바이스</strong>가 서비스 대상이 될 수 있다. </li>
+<li>B2B가 아니라 불특정 다수의 개인들에게 서비스하는 경우(여기서는 B2C라고 하겠다)에는 <strong>불특정한 태블릿과 스마트폰들</strong>이 서비스 대상이 될 것이다.</li>
+</ul>
+<h3 id="운영체제에-따른-지원범위"><a href="#운영체제에-따른-지원범위" class="headerlink" title="운영체제에 따른 지원범위"></a>운영체제에 따른 지원범위</h3><ul>
+<li>B2B 서비스의 경우 특정 디바이스가 선정되면, 해당 디바이스의 운영체제 하에서만 구동되므로 어떤 운영체제에서 지원할 것인지 선정하는 문제는 바로 해결된다. </li>
+<li>B2C 서비스의 경우는 불특정 다수에게 서비스하기 때문에 기본적으로 <strong>Multi-OS 지원</strong>이 필요하다.</li>
+</ul>
+<h3 id="출시일에-따른-지원범위"><a href="#출시일에-따른-지원범위" class="headerlink" title="출시일에 따른 지원범위"></a>출시일에 따른 지원범위</h3><ul>
+<li>일반적으로 B2B의 경우 최근 3년 이내에 출시된 장비를 도입하므로, 검토대상이 최근 3년 내 디바이스로 범위가 좁혀진다. </li>
+<li>단, B2C의 경우에는 디바이스 교체주기를 고려하여 지원 디바이스 범위를 선정하여야 한다. 안드로이드의 경우에는 교체주기가 평균 3년, iOS의 경우에는 교체주기가 평균 4년인 것을 감안하여 발주처의 상황에 맞게 적정 범위를 선정하는게 좋겠다. 예를 들어 젊은 층이 사용하는 트렌디한 서비스라면 지원범위가 타이트해도 될 것이고, 많은 연령층이 사용하는 서비스라면 지원범위가 좀더 폭넓어야 할 것이다. </li>
+</ul>
+<h3 id="가이드-샘플-디바이스"><a href="#가이드-샘플-디바이스" class="headerlink" title="가이드 샘플 디바이스"></a>가이드 샘플 디바이스</h3><p>들어가기에 앞서, 샘플 디바이스는 삼성전자의 최근 5개의 기종으로 정하였다. 삼성을 기준으로 잡은 이유는 작년말(2019말) 기준으로 세계 스마트폰 출하량 1위, 태블릿 2위에 오른 대표 브랜드이기 때문이다. 다만, 타 제조사 제품(애플, LG 등)을 도입하려고 해도 동일하게 방법론을 적용할 수 있다.</p>
+<blockquote>
+<p>갤럭시탭 S7+ (태블릿)<br>갤럭시탭 S7 (태블릿)<br>갤럭시탭 A (태블릿)<br>갤럭시 노트20 (스마트폰)<br>갤럭시 S20 (스마트폰)  </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">구분</th>
+<th align="center">제품명</th>
+<th align="center">제품크기 (mm)</th>
+<th align="center">화면크기 (inch)</th>
+<th align="center">해상도 (pixel)</th>
+<th align="center">무게 (g)</th>
+<th align="center">사용시간 (시간)</th>
+<th align="left">출시일</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">태블릿</td>
+<td align="center">갤럭시탭 S7+</td>
+<td align="center">285 x 185</td>
+<td align="center">12.4</td>
+<td align="center">2800 x 1752</td>
+<td align="center">575</td>
+<td align="center">8</td>
+<td align="left">2020-09</td>
+</tr>
+<tr>
+<td align="center">태블릿</td>
+<td align="center">갤럭시탭 S7</td>
+<td align="center">253.8 x 165.3</td>
+<td align="center">11</td>
+<td align="center">2560 x 1600</td>
+<td align="center">498</td>
+<td align="center">15</td>
+<td align="left">2020-09</td>
+</tr>
+<tr>
+<td align="center">태블릿</td>
+<td align="center">갤럭시탭 A</td>
+<td align="center">210 x 124.4</td>
+<td align="center">8</td>
+<td align="center">1280 x 800</td>
+<td align="center">345</td>
+<td align="center">-</td>
+<td align="left">2019-10</td>
+</tr>
+<tr>
+<td align="center">스마트폰</td>
+<td align="center">갤럭시 노트20</td>
+<td align="center">161.6 x 75.2</td>
+<td align="center">6.6</td>
+<td align="center">2400 x 1080</td>
+<td align="center">192</td>
+<td align="center">16</td>
+<td align="left">2020-08</td>
+</tr>
+<tr>
+<td align="center">스마트폰</td>
+<td align="center">갤럭시 S20</td>
+<td align="center">151.7 x 69.1</td>
+<td align="center">6.2</td>
+<td align="center">3200 x 1440</td>
+<td align="center">163</td>
+<td align="center">17</td>
+<td align="left">2020-03</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="검토-항목"><a href="#검토-항목" class="headerlink" title="검토 항목"></a>검토 항목</h3><p>검토 항목은 3가지로, (1) 사용자 환경, (2) 정보조회량, (3) 가용 사용시간이 있다. </p>
+<h4 id="사용자-환경-고려"><a href="#사용자-환경-고려" class="headerlink" title="사용자 환경 고려"></a>사용자 환경 고려</h4><blockquote>
+<p><strong>업무활동 반경</strong> 또는 <strong>이동 반경</strong>에 따라 디바이스를 선정한다.  </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">구분</th>
+<th align="center">업무활동 반경 / 이동거리가 넓은 경우</th>
+<th align="center">업무활동 반경 / 이동거리가 좁은 경우</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>적정 디바이스</strong></td>
+<td align="center">갤럭시 S20, 갤럭시 노트20</td>
+<td align="center">갤럭시탭 S7+, 갤럭시탭 S7, 갤럭시탭 A</td>
+</tr>
+</tbody></table>
+<h4 id="정보조회량-고려"><a href="#정보조회량-고려" class="headerlink" title="정보조회량 고려"></a>정보조회량 고려</h4><blockquote>
+<p><strong>조회/입력되는 정보량</strong> 및 <strong>입력 업무 수반 여부, 입력빈도</strong>에 따라 디바이스를 선정한다.  </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">구분</th>
+<th align="center">정보조회량/입력량/빈도가 많은 경우</th>
+<th align="center">정보조회량/입력량/빈도가 적은 경우</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>적정 디바이스</strong></td>
+<td align="center">갤럭시탭 S7+, 갤럭시탭 S7, 갤럭시탭 A</td>
+<td align="center">갤럭시 S20, 갤럭시 노트20</td>
+</tr>
+</tbody></table>
+<h4 id="가용-사용시간-고려"><a href="#가용-사용시간-고려" class="headerlink" title="가용 사용시간 고려"></a>가용 사용시간 고려</h4><blockquote>
+<p>완충 후 <strong>업무 사용시간</strong> 및 <strong>업무 중 충전 가능여부</strong>에 따라 디바이스를 선정한다.  </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">구분</th>
+<th align="center">지속 사용시간이 긴 경우</th>
+<th align="center">지속 사용시간이 짧은 경우</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>적정 디바이스</strong></td>
+<td align="center">갤럭시탭 S7, 갤럭시 노트20, 갤럭시 S20</td>
+<td align="center">갤럭시탭 S7+, 갤럭시탭 A</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">구분</th>
+<th align="center">충전이 가능한 경우</th>
+<th align="center">충전이 불가한 경우</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>적정 디바이스</strong></td>
+<td align="center">갤럭시탭 S7+, 갤럭시탭 A</td>
+<td align="center">갤럭시탭 S7, 갤럭시 노트20, 갤럭시 S20</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="OS-선정방안"><a href="#OS-선정방안" class="headerlink" title="OS 선정방안"></a>OS 선정방안</h2><p>국내 PC 시장의 OS는 사실상 MS Window가 장악하고 있는 것과 대비하여, 모바일에서는 어떤 디바이스를 선택하는가에 따라 OS가 달라질 수 있다. 더군다나 OS에 따라 사용자의 UI/UX부터 개발하는 방식까지 모든게 달라지기 때문에, 사전에 반드시 검토할 필요가 있다.</p>
+<h3 id="OS-점유율"><a href="#OS-점유율" class="headerlink" title="OS 점유율"></a>OS 점유율</h3><p>StatCounter에 따르면, 현재 (2020년 9월) 기준으로 세계 시장에서 모바일 OS의 점유율은 다음과 같다.<br>참고: <a target="_blank" rel="noopener" href="https://gs.statcounter.com/os-market-share/mobile/worldwide">Mobile Operating System Market Share Worldwide | StatCounter Global Stats</a></p>
+<ul>
+<li>Android <strong>74.25%</strong></li>
+<li>iOS <strong>25.15%</strong></li>
+<li>그 외 OS <strong>0.6%</strong></li>
+</ul>
+<p>즉, Android와 iOS를 지원하게 되면 전체 사용자의 99.6%를 수용할 수 있게 된다. 따라서 국내의 대부분 모바일 서비스들은 Android와 iOS를 지원 대상으로 하고 있다.</p>
+<h3 id="Android-버전-선정"><a href="#Android-버전-선정" class="headerlink" title="Android 버전 선정"></a>Android 버전 선정</h3><p>Android 공식 사이트에 따르면, 각각의 버전에 따른 점유율은 다음과 같다. (2020년 08월 22일 기준)<br>출처: <a target="_blank" rel="noopener" href="https://developer.android.com/about/dashboards">안드로이드 공식 사이트 - 안드로이드 버전별 점유율</a></p>
+<table>
+<thead>
+<tr>
+<th align="left">Version</th>
+<th align="left">CodeName</th>
+<th align="right">Distribution (%)</th>
+<th align="left">Release Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">9.x</td>
+<td align="left">Pie</td>
+<td align="right">10.4</td>
+<td align="left">2018-08-06</td>
+</tr>
+<tr>
+<td align="left">8.0.x ~ 8.1.x</td>
+<td align="left">Oreo</td>
+<td align="right">28.4</td>
+<td align="left">2017-08-22</td>
+</tr>
+<tr>
+<td align="left">7.0.x ~ 7.1.x</td>
+<td align="left">Nougat</td>
+<td align="right">19.2</td>
+<td align="left">2016-08-23</td>
+</tr>
+<tr>
+<td align="left">6.x</td>
+<td align="left">Marshmallow</td>
+<td align="right">16.9</td>
+<td align="left">2015-10-15</td>
+</tr>
+<tr>
+<td align="left">5.0.x ~ 5.1.x</td>
+<td align="left">Lollipop</td>
+<td align="right">14.5</td>
+<td align="left">2014-10-16</td>
+</tr>
+<tr>
+<td align="left">4.4.x</td>
+<td align="left">Kitkat</td>
+<td align="right">6.9</td>
+<td align="left">2013-10-31</td>
+</tr>
+<tr>
+<td align="left">4.1.x ~ 4.3.x</td>
+<td align="left">Jelly Bean</td>
+<td align="right">3.2</td>
+<td align="left">2012-07-09</td>
+</tr>
+<tr>
+<td align="left">4.0.x</td>
+<td align="left">Ice Cream Sandwich</td>
+<td align="right">0.3</td>
+<td align="left">2011-10-19</td>
+</tr>
+<tr>
+<td align="left">2.3.x</td>
+<td align="left">Gingerbread</td>
+<td align="right">0.3</td>
+<td align="left">2010-12-06</td>
+</tr>
+</tbody></table>
+<p><strong>안드로이드의 지원범위는 전체의 80% 이상을 수용할 수 있도록, Lollipop 이상을 지원한다.</strong></p>
+<h3 id="iOS-버전-선정"><a href="#iOS-버전-선정" class="headerlink" title="iOS 버전 선정"></a>iOS 버전 선정</h3><p>Apple 공식 사이트에 따르면, 각각의 버전에 따른 점유율은 다음과 같다. (2020년 08월 22일 기준)<br>출처: <a target="_blank" rel="noopener" href="https://developer.apple.com/kr/support/app-store/">App Store - 지원 - Apple Developer - iOS 버전별 점유율</a></p>
+<h4 id="지난-4년간-도입된-아이폰의-OS버전-점유율"><a href="#지난-4년간-도입된-아이폰의-OS버전-점유율" class="headerlink" title="지난 4년간 도입된 아이폰의 OS버전 점유율"></a>지난 4년간 도입된 아이폰의 OS버전 점유율</h4><table>
+<thead>
+<tr>
+<th align="left">Version</th>
+<th align="right">Distribution (%)</th>
+<th align="left">Release Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">iOS13</td>
+<td align="right">92</td>
+<td align="left">2019-09-20</td>
+</tr>
+<tr>
+<td align="left">iOS12</td>
+<td align="right">7</td>
+<td align="left">2018-12-18</td>
+</tr>
+<tr>
+<td align="left">이하 버전</td>
+<td align="right">2</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="전체-아이폰의-OS버전-점유율"><a href="#전체-아이폰의-OS버전-점유율" class="headerlink" title="전체 아이폰의 OS버전 점유율"></a>전체 아이폰의 OS버전 점유율</h4><table>
+<thead>
+<tr>
+<th align="left">Version</th>
+<th align="right">Distribution (%)</th>
+<th align="left">Release Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">iOS13</td>
+<td align="right">81</td>
+<td align="left">2019-09-20</td>
+</tr>
+<tr>
+<td align="left">iOS12</td>
+<td align="right">13</td>
+<td align="left">2018-12-18</td>
+</tr>
+<tr>
+<td align="left">이하 버전</td>
+<td align="right">6</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<p><strong>아이폰의 지원범위는 전체의 80% 이상을 수용할 수 있도록, iOS 12 이상을 지원한다.</strong></p>
+<h4 id="지난-4년간-도입된-아이패드의-OS버전-점유율"><a href="#지난-4년간-도입된-아이패드의-OS버전-점유율" class="headerlink" title="지난 4년간 도입된 아이패드의 OS버전 점유율"></a>지난 4년간 도입된 아이패드의 OS버전 점유율</h4><table>
+<thead>
+<tr>
+<th align="left">Version</th>
+<th align="right">Distribution (%)</th>
+<th align="left">Release Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">iPadOS</td>
+<td align="right">93</td>
+<td align="left">2019-06-03</td>
+</tr>
+<tr>
+<td align="left">iOS 12</td>
+<td align="right">5</td>
+<td align="left">2018-12-18</td>
+</tr>
+<tr>
+<td align="left">이하 버전</td>
+<td align="right">1</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="전체-아이패드의-OS버전-점유율"><a href="#전체-아이패드의-OS버전-점유율" class="headerlink" title="전체 아이패드의 OS버전 점유율"></a>전체 아이패드의 OS버전 점유율</h4><table>
+<thead>
+<tr>
+<th align="left">Version</th>
+<th align="right">Distribution (%)</th>
+<th align="left">Release Date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">iPadOS</td>
+<td align="right">73</td>
+<td align="left">2019-06-03</td>
+</tr>
+<tr>
+<td align="left">iOS 12</td>
+<td align="right">16</td>
+<td align="left">2018-12-18</td>
+</tr>
+<tr>
+<td align="left">이하 버전</td>
+<td align="right">11</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<p><strong>아이패드의 지원범위는 전체의 80% 이상을 수용할 수 있도록, iOS 12와 iPad OS를 지원한다.</strong></p>
+<hr>
+<h2 id="해상도-선정방안"><a href="#해상도-선정방안" class="headerlink" title="해상도 선정방안"></a>해상도 선정방안</h2><p>해상도는 선정된 표준 디바이스를 기준으로, 아래 해상도 테이블을 참고하여 전체의 80% 이상을 지원할 수 있는 범위를 고려하여야 한다.</p>
+<h3 id="Android-해상도"><a href="#Android-해상도" class="headerlink" title="Android 해상도"></a>Android 해상도</h3><p>Android의 화면크기에 따른 해상도 점유율을 정리한 자료이다.<br>출처: <a target="_blank" rel="noopener" href="https://developer.android.com/about/dashboards">안드로이드 공식 사이트 - 안드로이드 버전별 점유율</a></p>
+<table>
+<thead>
+<tr>
+<th align="right">ldpi</th>
+<th align="right">mdpi</th>
+<th align="right">tvdpi</th>
+<th align="right">hdpi</th>
+<th align="right">xhdpi</th>
+<th align="right">xxhdpi</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right"><strong>Small</strong></td>
+<td align="right">0.1%</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">0.1%</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="right"><strong>Normal</strong></td>
+<td align="right"></td>
+<td align="right">0.4%</td>
+<td align="right">0.3%</td>
+<td align="right">17.0%</td>
+<td align="right">41.1%</td>
+<td align="right">25.9%</td>
+</tr>
+<tr>
+<td align="right"><strong>Large</strong></td>
+<td align="right"></td>
+<td align="right">1.8%</td>
+<td align="right">2.0%</td>
+<td align="right">0.7%</td>
+<td align="right">2.6%</td>
+<td align="right">2.1%</td>
+</tr>
+<tr>
+<td align="right"><strong>Xlarge</strong></td>
+<td align="right"></td>
+<td align="right">3.5%</td>
+<td align="right"></td>
+<td align="right">1.9%</td>
+<td align="right">0.5%</td>
+<td align="right"></td>
+</tr>
+<tr>
+<td align="right"><strong>Total</strong></td>
+<td align="right">0.1%</td>
+<td align="right">5.7%</td>
+<td align="right">2.3%</td>
+<td align="right">19.6%</td>
+<td align="right">44.3%</td>
+<td align="right">28.0%</td>
+</tr>
+</tbody></table>
+<h3 id="iOS-해상도"><a href="#iOS-해상도" class="headerlink" title="iOS 해상도"></a>iOS 해상도</h3><p>iPhone 4S ~ iPhone 8 Plus의 해상도 / 연관 디바이스 / 화면크기 / 출시일을 정리한 자료이다.<br>출처: <a target="_blank" rel="noopener" href="http://iosres.com/">iOS Quick Reference for iPhone, iPad, and Apple Watch</a></p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">iPhone 4S</th>
+<th align="left">iPhone 5S</th>
+<th align="left">iPhone 8</th>
+<th align="left">iPhone 8 Plus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Resolution</strong></td>
+<td align="left">640 x 960</td>
+<td align="left">640 x 1136</td>
+<td align="left">750 x 1334</td>
+<td align="left">1242 x 2208</td>
+</tr>
+<tr>
+<td align="left"><strong>Associated Devices</strong></td>
+<td align="left">iPhone4</td>
+<td align="left">iPhone5, iPhone5c, iPhoneSE</td>
+<td align="left">iPhone6, iPhone6S, iPhone7, iPhoneSE2</td>
+<td align="left">iPhone6Plus, iPhone6SPlus, iPhone7Plus</td>
+</tr>
+<tr>
+<td align="left"><strong>Size (inch)</strong></td>
+<td align="left">3.5</td>
+<td align="left">4</td>
+<td align="left">4.7</td>
+<td align="left">5.5</td>
+</tr>
+<tr>
+<td align="left"><strong>Release</strong></td>
+<td align="left">2011-10</td>
+<td align="left">2013-09</td>
+<td align="left">2017-09</td>
+<td align="left">2017-09</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">iPhone XS Max</th>
+<th align="left">iPhone 11</th>
+<th align="left">iPhone 11 Pro</th>
+<th align="left">iPhone 11 Pro Max</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Resolution</strong></td>
+<td align="left">1125 x 2436</td>
+<td align="left">828 x 1792</td>
+<td align="left">1125 x 2436</td>
+<td align="left">1242 x 2688</td>
+</tr>
+<tr>
+<td align="left"><strong>Associated Devices</strong></td>
+<td align="left">-</td>
+<td align="left">iPhoneXR</td>
+<td align="left">iPhoneX, iPhoneXS</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><strong>Screen Size</strong></td>
+<td align="left">6.5</td>
+<td align="left">6.1</td>
+<td align="left">5.8</td>
+<td align="left">6.5</td>
+</tr>
+<tr>
+<td align="left"><strong>Release</strong></td>
+<td align="left">2018-09</td>
+<td align="left">2019-09</td>
+<td align="left">2019-09</td>
+<td align="left">2019-09</td>
+</tr>
+</tbody></table>
+<h2 id="참고한-사이트"><a href="#참고한-사이트" class="headerlink" title="참고한 사이트"></a>참고한 사이트</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://wingsh.tistory.com/241">국내 OS 별, 디바이스별 점유율 :: 꾸준함의 위대함</a></li>
+<li><a target="_blank" rel="noopener" href="https://tadomstudio.tistory.com/4">안드로이드 / android  해상도에 대한 이해</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions%20">아이폰 전체 해상도 정리</a></li>
+<li><a target="_blank" rel="noopener" href="https://yslab.kr/92">모바일 디바이스별 해상도 및 상세스펙 확인방법 - IT 기획 연구소</a></li>
+<li><a target="_blank" rel="noopener" href="http://imagestory.net/?p=941">모바일 디자인 가이드 – Tarot’s Design &amp; Frontend Dev.</a></li>
+</ul>
+<p>끝.</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-09-08T11:00:00.000Z" title="2020-09-08T11:00:00.000Z">2020-09-08</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-09T06:55:09.391Z" title="2020-10-09T06:55:09.391Z">2020-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-FHIR-HAPI-FHIR-%EC%84%A4%EC%B9%98/">오픈소스 &gt; FHIR &gt; HAPI FHIR 설치</a></span><span class="level-item">6 minutes read (About 938 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/08/hapi-fhir-manual-1/">HAPI FHIR 환경 구성하기 (1/7편) - JDK 설치</a></h1><div class="content"><p>오픈소스 HAPI FHIR 환경은 다음과 같이 7단계로 구성된다.<br>본 글에서는 <strong>1. HAPI FHIR 환경 구성하기 (1/7편) - JDK 설치</strong>에 대해 다룬다.</p>
+<ol>
+<li><a href="https://ilovemychange.github.io/2020/09/08/hapi-fhir-manual-1/">HAPI FHIR 환경 구성하기 (1/7편) - JDK 설치</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/09/hapi-fhir-manual-2/">HAPI FHIR 환경 구성하기 (2/7편) - Eclipse 설치</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/10/hapi-fhir-manual-3/">HAPI FHIR 환경 구성하기 (3/7편) - Tomcat 설치</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/11/hapi-fhir-manual-4/">HAPI FHIR 환경 구성하기 (4/7편) - MySQL 설치 및 스키마/계정 설정</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/12/hapi-fhir-manual-5/">HAPI FHIR 환경 구성하기 (5/7편) - hapi-fhir-jpa-server 환경세팅</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/13/hapi-fhir-manual-6/">HAPI FHIR 환경 구성하기 (6/7편) - hapi-fhir 테스트 페이지 활용</a></li>
+<li><a href="https://ilovemychange.github.io/2020/09/14/hapi-fhir-manual-7/">HAPI FHIR 환경 구성하기 (7/7편) - hapi-fhir-client 환경세팅</a></li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://m.blog.naver.com/cjhol2107/221781711556">JDK(Java Development Kit)</a>은 자바 어플리케이션을 구축하기 위한 플랫폼 구성요소다. JDK는 대표적으로 OracleJDK와 OpenJDK가 있는데, 이 중에서 오픈소스인 OpenJDK를 설치하도록 한다. (OracleJDK의 경우 현재 라이센스 이슈가 있다.) OpenJDK 버전 중에서는 고객사에서 사용중인 <a target="_blank" rel="noopener" href="http://github.com/ojdkbuild/ojdkbuild">OpenJDK 1.8.0</a>를 설치한다. 필자는 Windows 환경에서 설치 중이므로, Windows를 기준으로 설명하겠다. </p>
+<hr>
+<ol>
+<li><a target="_blank" rel="noopener" href="http://github.com/ojdkbuild/ojdkbuild">OpenJDK 1.8.0 - Gihub</a> 페이지에 접속하여 .zip 파일을 클릭하여 내려받는다. 최신 버전을 설치하였으며, 2020년 10월 기준으로 최신버전은 1.8.0.265이다. </li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-openjdk/01.github.png" alt=""></p>
+<ol start="2">
+<li>내려받은 파일을 압축을 푼다.</li>
+<li>D:드라이브 아래 hapi-fhir라는 폴더를 생성한 후에 압축을 푼 jdk 폴더를 D:/hapi-fhir 경로로 위치시킨다.<br>Hapi-fhir 폴더는 앞으로 각종 소프트웨어와 소스가 위치하게될 프로젝트 폴더이니 기억해두도록 한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-openjdk/02.folder.png" alt=""></p>
+<ol start="4">
+<li>다운받은 jdk를 시스템 환경변수에 등록해주어야 한다. <strong>[제어판] &gt; [시스템] &gt; [고급 시스템 설정] &gt; [고급 탭] &gt; [환경변수]</strong> 순으로 타고 들어간다. 먼저, [제어판]에서 [시스템]을 선택한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-openjdk/03.control-panel.png" alt=""></p>
+<ol start="5">
+<li>[시스템] 좌측 메뉴에서 [고급 시스템 설정]을 선택한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-openjdk/04.system.png" alt=""></p>
+<ol start="6">
+<li>[시스템 속성]의 [고급] 탭에서 [환경 변수]를 선택한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-openjdk/05.system-config.png" alt=""></p>
+<ol start="7">
+<li>[시스템 변수]를 새로 만든다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-openjdk/06.environment-variable.png" alt=""></p>
+<ol start="8">
+<li>새 시스템 변수로 “JAVA_HOME”을 등록해준다. 변수값으로는 앞서 내려받은 jdk 폴더 경로(D:₩hapi-fhir₩openjdk-1.8.0.265)를 지정해준다. (단, 본인이 다운받은 jdk 버전에 따라 폴더명이 다르게 생성되었을 수 있으니 잘 확인하여 진행한다.) 작성한 후에는 [확인] 버튼을 선택하여 빠져나간다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-openjdk/07.java-home.png" alt=""></p>
+<ol start="9">
+<li>다음으로는 Path에 <strong>JAVA_HOME</strong>을 등록해주어야 한다. 시스템 변수 중에 “Path”를 찾아 [편집]한다.<br>Path에 한줄을 추가하여 %JAVA_HOME%₩bin 을 등록한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-openjdk/08.edit-path.png" alt=""></p>
+<ol start="10">
+<li>환경변수 편집이 끝났으므로, [확인] 버튼을 선택하여 빠져나간다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-openjdk/09.edit-complete.png" alt=""></p>
+<ol start="11">
+<li>jdk가 환경변수로 잘 등록되었는지 확인해볼 차례다. Command를 실행하여 <code>java -version</code> 을 실행해본다. 본인이 설치한 jdk의 버전이 아래에 잘 출력되는지 확인한다.</li>
+</ol>
+<p><img src="/image/hapi-fhir-screenshot/install-openjdk/10.java-version.png" alt=""></p>
+<p>OpenJDK 설치는 이것으로 마무리한다. </p>
 <p>끝.</p>
 </div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-09-05T11:33:00.000Z" title="2020-09-05T11:33:00.000Z">2020-09-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-03T02:40:55.537Z" title="2020-10-03T02:40:55.537Z">2020-10-03</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-FHIR-%EA%B8%B0%ED%9A%8D/">오픈소스 &gt; FHIR &gt; 기획</a></span><span class="level-item">7 minutes read (About 1096 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/09/05/fhir-project-plan/">FHIR 프로젝트 범위 확정안</a></h1><div class="content"><p>회사에서 FHIR 송수신 시스템을 구축하는 프로젝트를 진행 중인데, 프로젝트 범위를 어떻게 산정하였는지 기록하고자 한다. FHIR라는게 아직 아무도 걸어보지 않은 길이므로 프로젝트 범위를 협의하는 것에서부터 어려운 점들이 발생했다.</p>
 <hr>
@@ -508,397 +1135,7 @@
 <p>Ex. 소스파일, 소프트웨어 설치파일, 이미지 파일 등  </p>
 </blockquote>
 <p>끝.</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-08-16T13:00:00.000Z" title="2020-08-16T13:00:00.000Z">2020-08-16</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-04T13:20:54.923Z" title="2020-10-04T13:20:54.923Z">2020-10-04</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/">오픈소스 &gt; 레드마인</a></span><span class="level-item">12 minutes read (About 1774 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/08/16/redmine-group/">레드마인 그룹 설계하기</a></h1><div class="content"><p>레드마인과 관련된 글은 다음과 같이 5편으로 구성된다. 본 글에서는 <strong>2. 레드마인 그룹 설계하기</strong>에 대해 다룬다.</p>
-<ol>
-<li><a href="https://ilovemychange.github.io/2020/08/15/redmine-setup/">레드마인 설치하기</a></li>
-<li><a href="https://ilovemychange.github.io/2020/08/16/redmine-group/">레드마인 그룹 설계하기</a></li>
-<li><a href="https://ilovemychange.github.io/2020/08/18/redmine-etc/">레드마인 기타 기능 설계하기</a></li>
-<li><a href="https://ilovemychange.github.io/2020/08/20/remine-process-design/">레드마인 일감 프로세스 설계하기</a></li>
-<li>레드마인 일감 상세 설계하기 (작성중)</li>
-</ol>
-<hr>
-<p>레드마인에는 회원을 관리하는 유용한 기능이 있다. 회원들을 그룹핑할 수도 있고, 해당 그룹에는 특정한 권한 범위를 설정할 수도 있다. 회원관리 기능 사용법에 대해서는 <a target="_blank" rel="noopener" href="https://opentutorials.org/course/438/2422">생활코딩 &gt; 프로젝트관리 &gt; 레드마인 &gt; 회원 &gt; 회원관리</a>에 자세하게 소개되어 있어서 참고하면 된다.</p>
-<p>필자 본인이 속해 있는 개발 프로젝트에는, 여느 SI 프로젝트와 같이 다양한 참여자들이 존재하였고, 각각의 R&amp;R에 따라 레드마인에서도 권한과 활동범위를 지정해줄 필요성이 있었다. 필자는 다음과 같이 그룹을 구분지었다.</p>
-<ol>
-<li>레드마인 관리자</li>
-<li>PMO </li>
-<li>현업 TF </li>
-<li>수행사 PL (Part Leader)</li>
-<li>수행사 개발팀  </li>
-<li>기간계 개발팀 (선택 사항)</li>
-</ol>
-<p>각 그룹의 역할과 권한에 대해서는 아래에 구체적으로 설명하겠다. </p>
-<hr>
-<h2 id="레드마인-관리자"><a href="#레드마인-관리자" class="headerlink" title="레드마인 관리자"></a>레드마인 관리자</h2><p>레드마인 관리자는, 말 그대로 <strong>레드마인 시스템을 관리하고 운영하는 사람</strong>을 말한다. 레드마인의 모든 권한이 열려있는 “슈퍼 유저”라고 볼 수도 있겠다. 회원관리/생성/수정/삭제부터 프로젝트 관리/생성/수정/삭제, 게시판 관리/생성/수정/삭제, 일감 관리/생성/수정/삭제 등의 모든 권한을 가지도록 했다. 프로젝트 중에는 필자 본인이 [레드마인 관리자]의 역할을 맡았으나, 추후에 레드마인은 고객사에 인도해야 하기 때문에 해당 프로젝트 발주처 부서의 담당자도 레드마인 관리자로 등록하였다.</p>
-<blockquote>
-<p>레드마인 전체 권한 소유<br>(레드마인 설정, 프로젝트 생성, 게시판 생성, 회원 등록, 뉴스 공지, 일감 등록/삭제/수정 등) </p>
-</blockquote>
-<hr>
-<h2 id="PMO"><a href="#PMO" class="headerlink" title="PMO"></a>PMO</h2><p>PMO는 Project Management Office의 약자로, <strong>프로젝트 관리의 롤을 맡은 다양한 참여자</strong>들이다. 필자가 속한 프로젝트에서는 발주처 쪽에서 PM과 사업관리, 그리고 해당 프로젝트의 스폰서들까지 총 5명이 있었고, 수행사 쪽에서는 PM과 사업관리 2명이 있었다. 이들은 사실 레드마인에서 특별하게 Action을 하는 일은 없으나, 레드마인을 통해  현업 및 수행팀의 업무 진척상황들을 모니터링하고, 이슈가 발생하였다면 그것을 해결하고, 레드마인 데이터를 엑셀로 내려받아 각종 프로젝트 품질지표를 측정하는 역할을 하는 사람들이다. 참고: <a target="_blank" rel="noopener" href="https://m.blog.naver.com/PostView.nhn?blogId=managetech&logNo=30144860448&proxyReferer=https:%2F%2Fwww.google.com%2F">PMO란? : 네이버 블로그</a></p>
-<blockquote>
-<p>해당 프로젝트의 전체 권한 소유<br>(게시판 생성, 뉴스 공지, 일감 등록/삭제/수정 등) </p>
-</blockquote>
-<hr>
-<h2 id="현업-TF"><a href="#현업-TF" class="headerlink" title="현업 TF"></a>현업 TF</h2><p>TF란 Task Force를 뜻하고, <strong>발주처의 직원들 중에 일부 프로젝트를 지원하기 위해 구성된 현장의 전문가 조직</strong>을, 현업 TF라고 부르는 경우가 많다. 이들의 역할은 AS-IS 시스템의 주사용자 입장에서 TO-BE 시스템에서 개선되어야 할 것들의 요구사항을 제시하고, 시스템이 구축된 이후에는 해당 요구사항대로 잘 구현이 되었는지를 테스트하는 것이다. 즉, 테스트 결과를 레드마인에 입력하고, 테스트가 실패하였다면 어떤 지점에서 에러가 발생하였는지 결함을 등록하게 될 것이다. 그리고 결함이 수정되었다면 테스트를 통해 시스템이 올바르게 동작하는지를 점검하는 역할까지 수행하게 된다.</p>
-<blockquote>
-<p>일감 등록, 편집 (+본인이 등록한 글은 삭제 가능)<br>게시판 글 작성, 댓글 달기</p>
-</blockquote>
-<hr>
-<h2 id="수행사-PL"><a href="#수행사-PL" class="headerlink" title="수행사 PL"></a>수행사 PL</h2><p>PL이란, Part Leader로 주로 <strong>수행사에서 개발팀을 리딩하는 역할</strong>을 하는 사람이다. 위에서 설명한 현업 TF와 주로 소통하며, 소통한 내용을 토대로 수행사 개발팀(설계자, 개발자, 디자이너)에게 각종 업무를 할당하게 된다. 또한 현업 TF와 함께 테스트를 수행하는 주체가 되기도 하며, 직접 결함을 등록하기도 한다. 현업 TF를 통해 결함이 보고되었을 때 이것이 결함이 맞는지를 점검하고, 해당 프로그램을 담당하는 개발자에게 결함조치를 할당하는 역할을 한다. 참고: <a target="_blank" rel="noopener" href="https://m.blog.naver.com/PostView.nhn?blogId=seonsin25&logNo=30154924257&proxyReferer=https:%2F%2Fwww.google.com%2F">IT용어 개발자, PL, PM, IT 컨설턴트 상세 설명 : 네이버 블로그</a></p>
-<blockquote>
-<p>일감 등록, 편집 (+본인이 등록한 글은 삭제 가능)<br>뉴스 공지, 게시판 글 작성, 댓글 달기</p>
-</blockquote>
-<hr>
-<h2 id="수행사-개발팀"><a href="#수행사-개발팀" class="headerlink" title="수행사 개발팀"></a>수행사 개발팀</h2><p>수행사 개발팀이란, <strong>설계자, 개발자, 디자이너 등이 소속된 수행사의 개발조직</strong>이다. 프로그램을 설계하고 개발하는 주체이며, 수행사 PL을 통해 각종 업무를 할당받게 된다.</p>
-<blockquote>
-<p>일감 등록, 편집 (+본인이 등록한 글은 삭제 가능)<br>게시판 글 작성, 댓글 달기</p>
-</blockquote>
-<hr>
-<h2 id="기간계-개발팀-선택사항"><a href="#기간계-개발팀-선택사항" class="headerlink" title="기간계 개발팀 (선택사항)"></a>기간계 개발팀 (선택사항)</h2><p>기간계 개발팀이란, <strong>발주처에 구축되어 있는 각종 시스템을 운영하고 개발하는 발주처 소속의 개발팀</strong>이다. 이들은 발주처 직원일수도 있고 때로는 아웃소싱 조직일 수도 있다.  선택사항이라고 표시한 이유는, 우리 시스템에서 기간계 시스템과 인터페이스하는 프로그램이 전혀 없거나, 또는 얼마 없다면 굳이 레드마인에 기간계 개발팀을 초대할 필요가 없이 직접 다이렉트로 소통하는게 낫기 때문이다. 다만, 기간계와 인터페이스하는 프로그램이 상당부분 존재하고, 그것이 프로젝트 성공에 큰 영향이 있다면, 레드마인 내에도 이들 그룹을 초대하여 진척에 대해 관리하는 것이 바람직할 것이다.</p>
-<blockquote>
-<p>일감 편집 가능</p>
-</blockquote>
-<p>끝.</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-08-15T13:00:00.000Z" title="2020-08-15T13:00:00.000Z">2020-08-15</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-04T13:20:57.839Z" title="2020-10-04T13:20:57.839Z">2020-10-04</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/">오픈소스 &gt; 레드마인</a></span><span class="level-item">6 minutes read (About 891 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/08/15/redmine-setup/">레드마인 설치하기</a></h1><div class="content"><p>프로젝트 수행 중에 레드마인을 직접 세팅하고 커스터마이징해볼 기회가 생겨서 추후 다른 프로젝트에서 활용할 때도 참고할 수 있도록 기록을 남겨두고자 한다.</p>
-<p>레드마인과 관련된 글은 다음과 같이 5편으로 구성된다. 본 글에서는 <strong>1. 레드마인 설치하기</strong>에 대해 다룬다.</p>
-<ol>
-<li><a href="https://ilovemychange.github.io/2020/08/15/redmine-setup/">레드마인 설치하기</a></li>
-<li><a href="https://ilovemychange.github.io/2020/08/16/redmine-group/">레드마인 그룹 설계하기</a></li>
-<li><a href="https://ilovemychange.github.io/2020/08/18/redmine-etc/">레드마인 기타 기능 설계하기</a></li>
-<li><a href="https://ilovemychange.github.io/2020/08/20/remine-process-design/">레드마인 일감 프로세스 설계하기</a></li>
-<li>레드마인 일감 상세 설계하기 (작성중)</li>
-</ol>
-<hr>
-<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><ul>
-<li>설치는 <a target="_blank" rel="noopener" href="https://luckygg.tistory.com/39">레드마인 설치 따라하기 (Windows 7/10)</a>를 참고하여 진행하였다. 설치파일은 <a target="_blank" rel="noopener" href="https://bitnami.com/stack/redmine/installer">Bitnami - Download Redmine</a>에서 다운로드 가능하다.</li>
-<li>추후 리눅스에 설치하는 경우에는, Bitnami에서 제공하는 <a target="_blank" rel="noopener" href="https://hub.docker.com/r/bitnami/redmine/">Docker를 활용한 레드마인 설치</a>를 참고하면 될 듯하다.</li>
-</ul>
-<hr>
-<h2 id="레드마인-사용법"><a href="#레드마인-사용법" class="headerlink" title="레드마인 사용법"></a>레드마인 사용법</h2><ul>
-<li>감사하게도 레드마인의 대부분의 사용법은 생활코딩 사이트에 교육영상이 있다. <a target="_blank" rel="noopener" href="https://opentutorials.org/course/438/2397">생활코딩 &gt; 프로젝트관리도구 &gt; 레드마인</a>을 참고하여 약 1시간 정도 공부하니 설치부터, 주요기능, 회원, 프로젝트, 일감, 로드맵, 위키, 저장소 기능에 대해 익힐 수 있었다.</li>
-<li>레드마인을 커스터마이징하고자 한다면 반드시 <strong>사용자 정의항목</strong>을 맞딱뜨리게 될 것이다. 즉, 일감의 하위 입력 필드는 사용자의 필요에 따라 커스터마이징할 수 있다. 필자는 <a target="_blank" rel="noopener" href="https://luckygg.tistory.com/113">사용자 정의 항목 추가하기 블로그</a>를 참고하여 진행하였다.</li>
-</ul>
-<hr>
-<h2 id="테마-적용"><a href="#테마-적용" class="headerlink" title="테마 적용"></a>테마 적용</h2><p>기본 테마가 밋밋하다면, <a href="http://pseg.or.kr/pseg/?mid=infouse&search_target=tag&search_keyword=Redmine&document_srl=3070">테마 적용 따라하기</a>를 참고하여 색다른 테마를 입혀볼 것을 추천한다. 레드마인에서 제공하는 <a target="_blank" rel="noopener" href="https://www.redmine.org/projects/redmine/wiki/theme_list">Theme List - Redmine</a>에서 전체 테마리스트를 볼 수 있다. 가장 인기있는 테마는 A1, PurpleMine2 등이 있다. 필자는 <a target="_blank" rel="noopener" href="https://github.com/Nitrino/flatly_light_redmine">Flatly_light_redmine 테마</a>를 활용하였다. </p>
-<hr>
-<h2 id="Plug-In-설치"><a href="#Plug-In-설치" class="headerlink" title="Plug-In 설치"></a>Plug-In 설치</h2><p>레드마인에서 제공하는 각종 추가 기능을 활용하고 싶다면, <a target="_blank" rel="noopener" href="http://www.redmine.org/projects/redmine/wiki/Plugin_List">레드마인 공식 플러그인 리스트</a>를 참고하면 된다. 전체 플러그인이 다 필요하지는 않을테니, 이 중에서 입맛에 맞게 설치하여 쓰면 된다. 다만, 그동안 레드마인을 써본 유저들이 주로 추천하는 플러그인들이 있어 링크 남기도록 하겠다.</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://pseg.or.kr/pseg/inforeview/4309">유용한 플러그인 Top 5</a>,  <a target="_blank" rel="noopener" href="https://myinbox.tistory.com/107">유용한 플러그인 Top 10</a></li>
-<li><a target="_blank" rel="noopener" href="https://mine-it-record.tistory.com/169">레드마인 플러그인 설치 따라하기</a></li>
-</ul>
-<p>플러그인을 다운로드 받은 후에는 아래 명령어를 통해 서버에 반영이 가능하다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bundle install --without development test --no-deployment</span><br><span class="line">bundle exec rake redmine:plugins NAME&#x3D;redmine_agile RAILS_ENV&#x3D;production</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="그-외"><a href="#그-외" class="headerlink" title="그 외"></a>그 외</h2><p>서버 이전이 필요한 경우에는 <a target="_blank" rel="noopener" href="https://yeti.tistory.com/45">서버 이전하기 - 잡동사니 블로그</a>를 참고한다.</p>
-<p>끝.</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-08-08T11:00:00.000Z" title="2020-08-08T11:00:00.000Z">2020-08-08</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-10-03T02:45:18.980Z" title="2020-10-03T02:45:18.980Z">2020-10-03</time></span><span class="level-item"><a class="link-muted" href="/categories/%EC%82%AC%EC%97%85%EA%B4%80%EB%A6%AC-%ED%91%9C%EC%A4%80-%EC%82%B0%EC%B6%9C%EB%AC%BC/">사업관리 &gt; 표준 산출물</a></span><span class="level-item">14 minutes read (About 2165 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/08/08/standard-formal-guide/">표준 산출물 작성 가이드</a></h1><div class="content"><p>현 프로젝트에서 사업관리 역할을 일부 겸하면서, 프로젝트 팀원들이 함께 사용할 수 있는 표준 산출물 템플릿과 작성가이드를 만드는 업무를 진행하였다. 산출물은 프로젝트 종료시에 발주처에 납품해야 하는 가장 핵심적인 결과물들인데, 템플릿이 어떻게 구성되느냐에 따라 향후 작성될 산출물들의 퀄리티가 좌지우지될 수 있기 때문에 보기보다 중요한 업무이다. 그래서 몇가지 기억해둘만한 요소를 기록하고자 한다.</p>
-<ol>
-<li>산출물 목록</li>
-<li>문서 명명 규칙</li>
-<li>버전 관리 규칙</li>
-<li>문서 스타일</li>
-<li>ID 생성 규칙</li>
-</ol>
-<hr>
-<h2 id="산출물-목록"><a href="#산출물-목록" class="headerlink" title="산출물 목록"></a>산출물 목록</h2><p>발주처와 합의한 산출물 목록이다. 산출물의 범위는 프로젝트 규모에 따라, 구축하는 시스템의 특성에 따라 달라지니 참고만 한다.</p>
-<p><strong>착수 및 계획</strong> 단계의 산출물이다.</p>
-<blockquote>
-<p>사업수행계획서  </p>
-</blockquote>
-<p><strong>실행 및 통제, 종료</strong> 단계의 산출물이다.</p>
-<blockquote>
-<p>주간보고서, 월간보고서, 완료보고서, WBS  </p>
-</blockquote>
-<p><strong>분석</strong> 단계의 산출물이다.</p>
-<blockquote>
-<p>요구사항정의서, 총괄테스트계획서  </p>
-</blockquote>
-<p><strong>설계</strong> 단계의 산출물이다.</p>
-<blockquote>
-<p>아키텍처설계서, 인터페이스설계서, 화면설계서, 프로그램목록, 데이터베이스설계서  </p>
-</blockquote>
-<p><strong>개발</strong> 단계의 산출물이다.</p>
-<blockquote>
-<p>소스코드, 업무프로세스절차서, 표준산출물템플릿, UI/UX 표준, 단계별 가이드  </p>
-</blockquote>
-<p><strong>테스트</strong> 단계의 산출물이다.</p>
-<blockquote>
-<p>단위테스트 계획서, 단위테스트 결과서, 통합테스트 계획서, 통합테스트 결과서  </p>
-</blockquote>
-<h3 id="이행-교육"><a href="#이행-교육" class="headerlink" title="이행/교육"></a>이행/교육</h3><blockquote>
-<p>리허설결과서, 사용자메뉴얼, 운영자메뉴얼, 교육결과서  </p>
-</blockquote>
-<h3 id="미제출이나-내부적으로-관리할-문서"><a href="#미제출이나-내부적으로-관리할-문서" class="headerlink" title="(미제출이나 내부적으로 관리할 문서)"></a>(미제출이나 내부적으로 관리할 문서)</h3><blockquote>
-<p>위험이슈관리대장, 변경요청서, 변경관리대장, 결함관리대장, 회의록 등  </p>
-</blockquote>
-<hr>
-<h2 id="문서ID-명명-규칙"><a href="#문서ID-명명-규칙" class="headerlink" title="문서ID 명명 규칙"></a>문서ID 명명 규칙</h2><p>일반적으로 10억대 이상의 중형 프로젝트만 진행하더라도 산출되는 문서가 20종이 넘고, 파트별로 쪼개지는 문서까지 합하면 약 50개가 넘는 문서가 탄생할 걸로 예상이 된다. 거기에 각각의 버전이 나뉘면서 수백개의 문서가 뒤섞이게 될 것이다. 100억대 이상의 대형 프로젝트는 수천개의 문서가 탄생하니, 내가 보고 싶은 문서를 찾는 것조차도 보통 일이 아닐 것이다. 따라서 원하는 문서를 빠르게 찾기 위해서는 해당 문서의 고유한 문서명칭을 잘 짓는 것이 중요하다. 현 프로젝트에서는 아래와 같은 규칙으로 문서 명명규칙을 세웠다.</p>
-<blockquote>
-<p>[프로젝트코드]—[프로세스약어코드]—[문서종류코드&amp;일련번호]—[산출물명]—[시스템명] _ [V버전]<br>Ex. MGS-AN-F01-요구사항정의서-메일_V1.1<br>Ex. MGS-DE-F01-데이터베이스설계서-푸시_V2.0  </p>
-</blockquote>
-<ul>
-<li><strong>프로젝트코드</strong>: 현재 프로젝트를 나타내는 약어 (Ex. MGS, 모바일 그룹웨어 시스템)</li>
-<li><strong>프로세스약어코드</strong>: <strong>아래 표를 참고</strong>한다. 2자리의 영문자 코드이다.</li>
-<li><strong>문서종류코드:</strong> <strong>아래 표를 참고</strong>한다. 1자리의 영문자 코드이다.</li>
-<li><strong>일련번호</strong>: 2자리의 숫자이다. 01부터 99까지 순서대로 부여한다.</li>
-<li><strong>산출물명</strong>: 산출물의 한글 명칭을 작성한다.</li>
-<li><strong>시스템명</strong>: 시스템이 구분되어 산출물이 쪼개지는 경우, 해당 시스템의 명칭을 작성한다. (Ex. 메일, 푸시)</li>
-<li><strong>버전</strong>: <strong>아래 버전관리규칙을 참고</strong>한다. </li>
-</ul>
-<h3 id="프로세스약어코드-정의"><a href="#프로세스약어코드-정의" class="headerlink" title="프로세스약어코드 정의"></a>프로세스약어코드 정의</h3><table>
-<thead>
-<tr>
-<th align="left">프로세스약어코드</th>
-<th align="left">프로세스 설명</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">AN</td>
-<td align="left">분석(Analysis)</td>
-</tr>
-<tr>
-<td align="left">DE</td>
-<td align="left">설계(Design)</td>
-</tr>
-<tr>
-<td align="left">DV</td>
-<td align="left">개발(Develop)</td>
-</tr>
-<tr>
-<td align="left">TS</td>
-<td align="left">테스트(Test)</td>
-</tr>
-<tr>
-<td align="left">DP</td>
-<td align="left">이행</td>
-</tr>
-<tr>
-<td align="left">PM</td>
-<td align="left">프로젝트관리</td>
-</tr>
-<tr>
-<td align="left">SC</td>
-<td align="left">범위관리</td>
-</tr>
-<tr>
-<td align="left">SH</td>
-<td align="left">일정관리(=진척관리)</td>
-</tr>
-<tr>
-<td align="left">CO</td>
-<td align="left">원가관리</td>
-</tr>
-<tr>
-<td align="left">CM</td>
-<td align="left">형상관리</td>
-</tr>
-<tr>
-<td align="left">QM</td>
-<td align="left">품질관리</td>
-</tr>
-<tr>
-<td align="left">RM</td>
-<td align="left">자원관리</td>
-</tr>
-<tr>
-<td align="left">CC</td>
-<td align="left">의사소통관리</td>
-</tr>
-<tr>
-<td align="left">RK</td>
-<td align="left">위험 및 이슈관리</td>
-</tr>
-<tr>
-<td align="left">SE</td>
-<td align="left">보안관리</td>
-</tr>
-<tr>
-<td align="left">ET</td>
-<td align="left">교육훈련</td>
-</tr>
-<tr>
-<td align="left">TT</td>
-<td align="left">기술이전</td>
-</tr>
-<tr>
-<td align="left">IM</td>
-<td align="left">검수관리</td>
-</tr>
-</tbody></table>
-<h3 id="문서종류코드-정의"><a href="#문서종류코드-정의" class="headerlink" title="문서종류코드 정의"></a>문서종류코드 정의</h3><table>
-<thead>
-<tr>
-<th align="left">문서종류코드</th>
-<th align="left">설명</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">R</td>
-<td align="left">보고서(Report)</td>
-</tr>
-<tr>
-<td align="left">F</td>
-<td align="left">산출물(Formal)</td>
-</tr>
-<tr>
-<td align="left">P</td>
-<td align="left">절차(Process)</td>
-</tr>
-<tr>
-<td align="left">G</td>
-<td align="left">가이드(Guide)</td>
-</tr>
-<tr>
-<td align="left">E</td>
-<td align="left">기타(etc)</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="버전-관리-규칙"><a href="#버전-관리-규칙" class="headerlink" title="버전 관리 규칙"></a>버전 관리 규칙</h2><p>문서는 소스코드처럼 형상관리시스템을 잘 사용하지 않으므로, 자체적으로 버전관리 규칙을 철저히 지켜주는 것이 좋다. 버전관리 규칙을 지키지 않으면, 나중에 어떤 버전이 최신인지 여러 담당자들끼리 작업이 꼬이는 문제가 반드시 발생할 것이다. 현 프로젝트에서는 아래와 같은 규칙으로 버전을 관리하기로 했다.</p>
-<h3 id="베이스라인-이전"><a href="#베이스라인-이전" class="headerlink" title="베이스라인 이전"></a>베이스라인 이전</h3><ul>
-<li>담당자가 초안 작성 시, <strong>V0.1</strong>을 부여한다.</li>
-<li>형상이 변경할 때마다, 버전을 <strong>0.1씩 증가</strong>시킨다.</li>
-</ul>
-<h3 id="베이스라인-수립"><a href="#베이스라인-수립" class="headerlink" title="베이스라인 수립"></a>베이스라인 수립</h3><ul>
-<li>베이스라인은 <strong>V1.0</strong>으로 정의한다.</li>
-<li>베이스라인이란, 발주처와 수행사가 합의 완료한 산출물의 최초 버전이라는 의미이다.</li>
-</ul>
-<h3 id="베이스라인-이후"><a href="#베이스라인-이후" class="headerlink" title="베이스라인 이후"></a>베이스라인 이후</h3><ul>
-<li>형상 항목의 내용 변경 시, <strong>V1.1부터 0.1씩 증가</strong>시킨다. (리비전에 대해서는 관련자에게만 공지한다.)</li>
-<li>형상관리 대상 및 메이저 항목의 변경 시,<strong>맨 앞자리 버전을 증가시킨다 (Ex. 1.0 -&gt; 2.0)</strong> </li>
-</ul>
-<hr>
-<h2 id="문서-스타일"><a href="#문서-스타일" class="headerlink" title="문서 스타일"></a>문서 스타일</h2><p>가장 기본적이면서 필수적으로 지켜야할 문서의 스타일은 다음과 같다. </p>
-<ol>
-<li>문서 종류: MS Office (Word/PPT/Excel)</li>
-<li>사업명: RFP에 공고된 사업명 기준으로 분명하게 적을 것</li>
-<li>문서크기: A4</li>
-<li>로고: 좌측하단에는 발주처 로고, 우측하단에는 수행사 로고</li>
-<li>글꼴: 맑은 고딕 </li>
-<li>첫 페이지에 결재라인 명시 (Ex. PL -&gt; PM -&gt; 사업단장)</li>
-<li>넘버링 체계 <blockquote>
-<ol>
-<li></li>
-<li>1  </li>
-<li>1.1  </li>
-<li>1.1.1  </li>
-<li>1.1.1.1  </li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<hr>
-<h2 id="Task-ID-생성-규칙"><a href="#Task-ID-생성-규칙" class="headerlink" title="Task ID 생성 규칙"></a>Task ID 생성 규칙</h2><p>일을 하다보면, 분명 추적관리가 필요한 Task들이 있을 것이다. 예를 들어 A라는 특정한 결함을 찾아가고 싶은데 수천개의 결함들 중에서 내가 원하는 결함을 어떻게 찾아갈 수 있을까? 그럴 때 해당 결함에 ID가 부여되어 있으면 추적이 용이할 것이다. 현 프로젝트에서는 추적을 위해 각각의 Task ID를 다음과 같이 생성하기로 규칙을 세웠다.</p>
-<blockquote>
-<p>[프로젝트 코드]—[서브시스템코드]—[업무코드&amp;일련번호]<br>Ex. MGS-PUSH-RQ0001<br>Ex. MGS-COMM-ID0033<br>예시설명. 모바일그룹웨어 구축 프로젝트의 푸시파트 요구사항 1번<br>예시설명. 모바일그룹웨어 구축 프로젝트의 공통파트 통합테스트 결함 33번</p>
-</blockquote>
-<ul>
-<li><strong>프로젝트코드</strong>: 현재 프로젝트를 나타내는 약어 (Ex. MGS, 모바일 그룹웨어 시스템)</li>
-<li><strong>서브시스템코드</strong>: 프로젝트팀 내에 구성된 각 파트별 약어, 3~4자리 코드이다. 아래 예시를 참고한다.</li>
-<li><strong>Task 코드</strong>: <strong>아래 표를 참고</strong>한다. 2자리의 영문자 코드이다.</li>
-<li><strong>일련번호</strong>: 4자리의 숫자이다. 0001부터 9999까지 순서대로 부여한다.</li>
-</ul>
-<h3 id="서브시스템코드-예시"><a href="#서브시스템코드-예시" class="headerlink" title="서브시스템코드(예시)"></a>서브시스템코드(예시)</h3><p>예시이므로 참고만 하고, 수행하는 프로젝트에 맞게 서브시스템코드는 재정의한다.</p>
-<table>
-<thead>
-<tr>
-<th align="left">서브시스템코드</th>
-<th align="left">설명</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">MAIL</td>
-<td align="left">메일 파트</td>
-</tr>
-<tr>
-<td align="left">PUSH</td>
-<td align="left">푸시 파트</td>
-</tr>
-<tr>
-<td align="left">INFRF</td>
-<td align="left">인프라 파트</td>
-</tr>
-<tr>
-<td align="left">COMM</td>
-<td align="left">공통 파트</td>
-</tr>
-</tbody></table>
-<h3 id="Task-코드"><a href="#Task-코드" class="headerlink" title="Task 코드"></a>Task 코드</h3><p>추적이 필요한 대부분의 Task를 아래와 같이 정의하였으나, 혹시 추가로 필요한 경우에는 추가하여 사용한다.</p>
-<table>
-<thead>
-<tr>
-<th align="left">Task 코드</th>
-<th align="left">의미</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">RQ</td>
-<td align="left">요구사항(Requirement)</td>
-</tr>
-<tr>
-<td align="left">SC</td>
-<td align="left">화면(Screen)</td>
-</tr>
-<tr>
-<td align="left">PG</td>
-<td align="left">프로그램(Program)</td>
-</tr>
-<tr>
-<td align="left">IF</td>
-<td align="left">인터페이스(Interface)</td>
-</tr>
-<tr>
-<td align="left">UC</td>
-<td align="left">단위테스트 케이스(Unit Test Case)</td>
-</tr>
-<tr>
-<td align="left">UD</td>
-<td align="left">단위테스트 결함(Unit Test Defect)</td>
-</tr>
-<tr>
-<td align="left">IS</td>
-<td align="left">통합테스트 시나리오(Integrated Test Scenario)</td>
-</tr>
-<tr>
-<td align="left">IC</td>
-<td align="left">통합테스트 케이스(Integrated Test Case)</td>
-</tr>
-<tr>
-<td align="left">ID</td>
-<td align="left">통합테스트 결함(Integrated Test Defect)</td>
-</tr>
-<tr>
-<td align="left">RS</td>
-<td align="left">리허설 시나리오(Rehearsal Scenario)</td>
-</tr>
-<tr>
-<td align="left">RC</td>
-<td align="left">리허설 케이스(Rehearsal Case)</td>
-</tr>
-<tr>
-<td align="left">RD</td>
-<td align="left">리허설 결함(Rehearsal Defect)</td>
-</tr>
-<tr>
-<td align="left">TR</td>
-<td align="left">교육(Training)</td>
-</tr>
-<tr>
-<td align="left">IU</td>
-<td align="left">이슈(Issue)</td>
-</tr>
-<tr>
-<td align="left">RK</td>
-<td align="left">위험(Risk)</td>
-</tr>
-<tr>
-<td align="left">CH</td>
-<td align="left">변경요청(Change)</td>
-</tr>
-</tbody></table>
-<p>끝.</p>
-</div></article></div><nav class="pagination is-centered mt-4" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/">Previous</a></div><div class="pagination-next"><a href="/page/3/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><a class="pagination-link is-current" href="/page/2/">2</a></li><li><a class="pagination-link" href="/page/3/">3</a></li></ul></nav></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3 is-sticky"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="ilovemychange"></figure><p class="title is-size-4 is-block line-height-inherit">ilovemychange</p><p class="is-size-6 is-block">쇼트트랙선수 출신의 어느 SI 개발자</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Korea/Seoul</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">23</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">12</p></a></div></div></nav><div class="level"><a class="level-item button is-info is-outlined is-rounded" href="/about" target="_self" rel="noopener">About</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Gmail" href="mailto: ilovemychange@gmail.com"><i class="fab fa-google"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/%EA%B8%B0%ED%9A%8D-RPA/"><span class="level-start"><span class="level-item">기획 &gt; RPA</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EA%B8%B0%ED%9A%8D-%EB%AA%A8%EB%B0%94%EC%9D%BC-%ED%91%9C%EC%A4%80/"><span class="level-start"><span class="level-item">기획 &gt; 모바일 표준</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%82%AC%EC%97%85%EA%B4%80%EB%A6%AC-%EC%B0%A9%EC%88%98%EB%B3%B4%EA%B3%A0/"><span class="level-start"><span class="level-item">사업관리 &gt; 착수보고</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%82%AC%EC%97%85%EA%B4%80%EB%A6%AC-%ED%91%9C%EC%A4%80-%EC%82%B0%EC%B6%9C%EB%AC%BC/"><span class="level-start"><span class="level-item">사업관리 &gt; 표준 산출물</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-FHIR-HAPI-FHIR-%EC%84%A4%EC%B9%98/"><span class="level-start"><span class="level-item">오픈소스 &gt; FHIR &gt; HAPI FHIR 설치</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-FHIR-%EA%B8%B0%ED%9A%8D/"><span class="level-start"><span class="level-item">오픈소스 &gt; FHIR &gt; 기획</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/"><span class="level-start"><span class="level-item">오픈소스 &gt; 레드마인</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%A0%9C%EC%95%88/"><span class="level-start"><span class="level-item">제안</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%A3%BC%EA%B0%84-%EC%97%85%EB%AC%B4%EC%9D%BC%EC%A7%80/"><span class="level-start"><span class="level-item">주간 업무일지</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Eclipse/"><span class="tag">Eclipse</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/FHIR/"><span class="tag">FHIR</span><span class="tag is-grey-lightest">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HAPI/"><span class="tag">HAPI</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL/"><span class="tag">MySQL</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/RPA/"><span class="tag">RPA</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tomcat/"><span class="tag">Tomcat</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/"><span class="tag">레드마인</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%AA%A8%EB%B0%94%EC%9D%BC-%ED%91%9C%EC%A4%80/"><span class="tag">모바일 표준</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%A0%9C%EC%95%88/"><span class="tag">제안</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%A3%BC%EA%B0%84-%EC%97%85%EB%AC%B4%EC%9D%BC%EC%A7%80/"><span class="tag">주간 업무일지</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%B0%A9%EC%88%98%EB%B3%B4%EA%B3%A0/"><span class="tag">착수보고</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%91%9C%EC%A4%80/"><span class="tag">표준</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">ilovemychange</a><p class="size-small"><span>&copy; 2020 ilovemychange</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination is-centered mt-4" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/">Previous</a></div><div class="pagination-next"><a href="/page/3/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><a class="pagination-link is-current" href="/page/2/">2</a></li><li><a class="pagination-link" href="/page/3/">3</a></li></ul></nav></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3 is-sticky"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="ilovemychange"></figure><p class="title is-size-4 is-block line-height-inherit">ilovemychange</p><p class="is-size-6 is-block">쇼트트랙선수 출신의 어느 SI 개발자</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Korea/Seoul</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">14</p></a></div></div></nav><div class="level"><a class="level-item button is-info is-outlined is-rounded" href="/about" target="_self" rel="noopener">About</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Gmail" href="mailto: ilovemychange@gmail.com"><i class="fab fa-google"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/%EA%B8%B0%ED%9A%8D-RPA/"><span class="level-start"><span class="level-item">기획 &gt; RPA</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EA%B8%B0%ED%9A%8D-%EB%AA%A8%EB%B0%94%EC%9D%BC-%ED%91%9C%EC%A4%80/"><span class="level-start"><span class="level-item">기획 &gt; 모바일 표준</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%82%AC%EC%97%85%EA%B4%80%EB%A6%AC-%EC%B0%A9%EC%88%98%EB%B3%B4%EA%B3%A0/"><span class="level-start"><span class="level-item">사업관리 &gt; 착수보고</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%82%AC%EC%97%85%EA%B4%80%EB%A6%AC-%ED%91%9C%EC%A4%80-%EC%82%B0%EC%B6%9C%EB%AC%BC/"><span class="level-start"><span class="level-item">사업관리 &gt; 표준 산출물</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-FHIR-HAPI-FHIR-%EC%84%A4%EC%B9%98/"><span class="level-start"><span class="level-item">오픈소스 &gt; FHIR &gt; HAPI FHIR 설치</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-FHIR-%EA%B8%B0%ED%9A%8D/"><span class="level-start"><span class="level-item">오픈소스 &gt; FHIR &gt; 기획</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/"><span class="level-start"><span class="level-item">오픈소스 &gt; 레드마인</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%A0%9C%EC%95%88/"><span class="level-start"><span class="level-item">제안</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%EC%A3%BC%EA%B0%84-%EC%97%85%EB%AC%B4%EC%9D%BC%EC%A7%80/"><span class="level-start"><span class="level-item">주간 업무일지</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Eclipse/"><span class="tag">Eclipse</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/FHIR/"><span class="tag">FHIR</span><span class="tag is-grey-lightest">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HAPI/"><span class="tag">HAPI</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JDK/"><span class="tag">JDK</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL/"><span class="tag">MySQL</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/RPA/"><span class="tag">RPA</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tomcat/"><span class="tag">Tomcat</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/jpaserver/"><span class="tag">jpaserver</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%A0%88%EB%93%9C%EB%A7%88%EC%9D%B8/"><span class="tag">레드마인</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%AA%A8%EB%B0%94%EC%9D%BC-%ED%91%9C%EC%A4%80/"><span class="tag">모바일 표준</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%A0%9C%EC%95%88/"><span class="tag">제안</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%A3%BC%EA%B0%84-%EC%97%85%EB%AC%B4%EC%9D%BC%EC%A7%80/"><span class="tag">주간 업무일지</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EC%B0%A9%EC%88%98%EB%B3%B4%EA%B3%A0/"><span class="tag">착수보고</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%91%9C%EC%A4%80/"><span class="tag">표준</span><span class="tag is-grey-lightest">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">ilovemychange</a><p class="size-small"><span>&copy; 2020 ilovemychange</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             site: {
                 url: 'https://ilovemychange.github.io',
                 external_link: {"enable":true,"exclude":[]}
